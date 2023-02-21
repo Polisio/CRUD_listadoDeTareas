@@ -21,39 +21,62 @@
     <!-- Inicia Form -->
     <div class="container">
         <div class="row">
-            <h1>Lista de actividades</h1>
+            <h1>Lista de Tareas</h1>
         </div>
 
-
         <div class="row">
-
             <div class="col-md-12">
                 <form>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="userInput" placeholder="Nombre">
+                        <input type="text" class="form-control input" id="userInput" placeholder="Nombre">
                         <label for="userInput">Nombre</label>
                     </div>
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="tarea" placeholder="Tarea">
-                        <label for="tarea">Tarea</label>
+                    
+                    <div class="row g-2">
+                        <div class="col-md">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control input" id="tarea" placeholder="Tarea">
+                                <label for="tarea">Tarea</label>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control input" id="materia" placeholder="Materia">
+                                <label for="materia">Materia</label>
+                            </div>
+                        </div>
                     </div>
+
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="coments" placeholder="Comentarios">
+                        <input type="text" class="form-control input" id="coments" placeholder="Comentarios">
                         <label for="coments">Comentarios</label>
                     </div>
-                    <div class="form-floating mb-3">
-                        <input type="date" class="form-control" id="date" placeholder="Fecha de entrega">
-                        <label for="date">Fecha de entrega</label>
+                    
+                    <div class="row g-2">
+                        <div class="col-md">
+                            <div class="form-floating mb-3">
+                                <input type="date" class="form-control input" id="date" placeholder="Fecha de inicio">
+                                <label for="date">Fecha de inicio</label>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="form-floating mb-3">
+                                <input type="date" class="form-control input" id="date1" placeholder="Fecha de entrega">
+                                <label for="date1">Fecha de entrega</label>
+                            </div>
+                        </div>
                     </div>
-
+                    <div class="row">
+                        <div class="col text-end">
+                            <button class="buttonCrear">Crear Tarea</button>
+                        </div>
+                    </div>
                 </form>
-
             </div>
 
             <div class="col-md-12 mt-4">
                 <table class="table table-bordered">
                     <thead id="userActivities">
-
                     </thead>
                 </table>
                 <table class="table table-bordered">
@@ -61,6 +84,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Tarea</th>
+                            <th>Fecha de inicio</th>
                             <th>Fecha de entrega</th>
                             <th>Comentarios</th>
                             <th class="text-center">Acciones</th>
@@ -71,13 +95,6 @@
                 </table>
             </div>
         </div>
-
-
-
-
-
-
-
     </div>
     
 
