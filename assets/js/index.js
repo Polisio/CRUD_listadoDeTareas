@@ -168,6 +168,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         localStorage.setItem("data", JSON.stringify(data));
         loadData();
+        loadDataResp();
         clearForm();
     });
 
@@ -191,6 +192,7 @@ document.addEventListener("DOMContentLoaded", function () {
             data.splice(index, 1);
             localStorage.setItem("data", JSON.stringify(data));
             loadData();
+            loadDataResp();
         }
     });
 
@@ -214,6 +216,7 @@ document.addEventListener("DOMContentLoaded", function () {
             data.splice(index, 1);
             localStorage.setItem("data", JSON.stringify(data));
             loadDataResp();
+            loadData();
         }
     });
 
