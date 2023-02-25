@@ -1,22 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     -webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
     box-sizing: border-box;
+    font-family: Nunito, Arial, Helvetica, sans-serif;
 }
 
+body {
+    height: 100vh;
+    align-items: center;
+    justify-items: center;
+    position: relative;
+}
 
+footer {
+    position: absolute;
+    width: 100%;
+    margin-top: 200px;
+}
 
 .input {
     background-color: #212529;
     max-width: 100%;
     height: 40px;
     padding: 10px;
-    /* text-align: center; */
     border: 2px solid white;
     border-radius: 5px;
-    /* box-shadow: 3px 3px 2px rgb(249, 255, 85); */
 }
 
 .input:focus {
@@ -29,7 +41,7 @@
 }
 
 .buttonCrear {
-    width: 10em;
+    width: 6em;
     position: relative;
     height: 2.5em;
     border: 3px ridge rgb(0, 255, 255);
@@ -45,7 +57,7 @@
 .buttonCrear::after {
     content: "";
     position: absolute;
-    top: -10px;
+    top: -4px;
     left: 3%;
     width: 95%;
     height: 40%;
@@ -73,4 +85,194 @@
 
 .buttonCrear:hover {
     box-shadow: inset 0px 0px 25px rgb(0, 255, 255);
+}
+
+        /* footer */
+
+.containerFooter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.containerFooter .emailSignature {
+    width: 700px;
+    display: flex;
+    align-items: center;
+    background-color: #222;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px #000;
+    padding: 10px 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.containerFooter .emailSignature .image img{
+    height: 150px;
+    width: 150;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    box-shadow: 0 0 5px #333;
+    position: relative;
+}
+
+.containerFooter .emailSignature .image::before {
+    content: '';
+    position: absolute;
+    top: -25px;
+    right: 70%;
+    height: 300px;
+    width: 300px;
+    background: #f0f0f0;
+    border-radius:  50%;
+    box-shadow: 20px 0 0 #2c3e50;
+}
+
+.containerFooter .emailSignature .content {
+    padding-left: 60px;
+}
+
+.containerFooter .emailSignature .content .name{
+    font-size: 25px;
+    color: #f0f0f0;
+    text-align: center;
+}
+
+.containerFooter .emailSignature .content .post {
+    font-size: 20px;
+    padding: 10px 0;
+    margin: 10px 5px;
+    border-radius: 50px;
+    background: #9d9d9c;
+    color: #0f4570;
+    text-align: center;
+}
+
+.containerFooter .emailSignature .content .contact {
+    margin-top: 30px;
+    margin-left: 15px;
+}
+
+.containerFooter .emailSignature .content .contact li {
+    list-style: none;
+    margin: 10px 0;
+    color: #9d9d9c;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.containerFooter .emailSignature .content .contact li i {
+    text-align: center;
+    color: #9d9d9c;
+    margin-right: 10px;
+}
+
+.containerFooter .emailSignature .content .icons {
+    position: absolute;
+    top: 50%;
+    right: 25px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-flow: column;
+}
+
+.containerFooter .emailSignature .content .icons a {
+    text-decoration: none;
+    height: 35px;
+    width: 35px;
+    line-height: 35px;
+    text-align: center;
+    background: #0f4570;
+    color: #9d9d9c;
+    border-radius: 50%;
+    margin: 5px 0;
+}
+
+.containerFooter .emailSignature .content .icons a:hover {
+    background: #333;
+}
+
+@media (max-width:768px){
+    .containerFooter .emailSignature{
+        flex-flow: column;
+        width: 90%;
+    }
+
+    .containerFooter .emailSignature .image::before{
+        width: 100%;
+        box-shadow: 0 15px 0 #2c3e50;
+        top: -25%;
+        left: 0;
+    }
+
+    .containerFooter .emailSignature .content{
+        width: 100%;
+        text-align: center;
+        padding: 50px 0;
+    }
+
+    .containerFooter .emailSignature .content .contact li{
+        text-align: left;
+        font-size: 12px;
+    }
+
+    .containerFooter .emailSignature .content .icons {
+        top: 93%;
+        right: 0;
+        width: 100%;
+        flex-flow: row;
+        justify-content: center;
+    }
+
+    .containerFooter .emailSignature .content .icons a {
+        margin: 0 5px;
+    }
+}
+
+/* Table Body */
+
+@media screen and (min-width: 920px) {
+    .tableResponsive {
+        display: none;
+    }
+}
+
+
+
+@media screen and (max-width: 920px) {
+    .tableBody {
+        display: none;
+    }
+
+    div.table {
+        display: block;
+        width: 100%;
+    }
+
+    div.item {
+        margin-bottom: 10px;
+    }
+
+    div.row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+    }
+
+    td.item {
+        border: 1px solid #ccc;
+        padding-left: 15px;
+        text-align: left;
+        width: 50px;
+    }
+
+    td.thead {
+        font-weight: 400;
+        border: 1px solid #ccc;
+        padding: 5px;
+        text-align: left;
+        width: 50%;
+    }
 }
