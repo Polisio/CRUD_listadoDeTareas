@@ -1,18 +1,19 @@
 
 document.addEventListener("DOMContentLoaded", function () {
     const saveBtn = document.getElementById("saveBtn");
-    const changeThemeBtn = document.getElementById("changeThemeBtn");
-    const inputName = document.getElementById("inputName");
-    const inputPuesto = document.getElementById("inputPuesto");
+    const inputUser = document.getElementById("inputUser")
+    const inputTask = document.getElementById("inputTask");
+    const inputArea = document.getElementById("inputArea");
+    const inputComents = document.getElementById("inputComents");
+    const inputDate = document.getElementById("inputDate");
     const tableBody = document.getElementById("tableBody");
 
     function loadData() {
-        // loadTheme();
         tableBody.innerHTML = `
-        <tr id="noData">
-            <td colspan="4" class="text-center">No hay datos</td>
-        </tr>
-            `;
+            <tr id="noData">
+                <td colspan="12" class="text-center">Por el momento no hay datos almacendos</td>
+            </tr>
+        `;
         const data = JSON.parse(localStorage.getItem("data")) || [];
         if (data.length) {
             document.getElementById("noData").remove();
@@ -20,82 +21,69 @@ document.addEventListener("DOMContentLoaded", function () {
         data.forEach((item, index) => {
             const tr = document.createElement("tr");
             tr.innerHTML = `
-                <td>${index + 1}</td>
-                <td>${item.name}</td>
-                <td>${item.puesto}</td>
-                <td class="text-center">
-                    <button type="button" class="btn btn-warning btn-edit" data-index="${index}">Editar</button>
-                    <button type="button" class="btn btn-danger btn-delete" data-index="${index}">Eliminar</button>
-                </td>
-                `;
-            
-            const td = document.createElement("tr");
-            td.innerHTML = `
-            <td class="text-center">Lista de Tareas de ${item.name}</td>
+                <td>Tareas de ${item.user}</td>
+                <tr>
+                    <td>${index + 1}</td>
+                    <td>${item.task}</td>
+                    <td>${item.area}</td>
+                    <td>${item.coments}</td>
+                    <td>${item.date}</td>
+                    <td class="text-center">
+                        <button type="button" class="btn btn-warning btn-edit" data-index="${index}">Editar</button>
+                        <button type="button" class="btn btn-danger btn-delete" data-index="${index}">Eliminar</button>
+                    </td>
+                </tr>
             `;
-            userActivities.appendChild(td);
+
             tableBody.appendChild(tr);
         });
     }
 
     function clearForm() {
-        inputName.value = "";
-        inputPuesto.value = "";
+        inputUser.value = "";
+        inputTask.value = "";
+        inputArea.value = "";
+        inputComents.value = "";
+        inputDate.value = "";
     }
 
+
     saveBtn.addEventListener("click", function () {
-        const name = inputName.value;
-        const puesto = inputPuesto.value;
-        if (!name) {
+        const user = inputUser.value;
+        const task = inputTask.value;
+        const area = inputArea.value;
+        const coments = inputComents.value;
+        const date = inputDate.value;
+        if (!user) {
             return;
         }
         const data = JSON.parse(localStorage.getItem("data")) || [];
         const index = saveBtn.getAttribute("data-index");
         console.log(index, "index");
         if (index) {
-            data[index] = { name, puesto };
+            data[index] = { user, task, area, coments, date };
             saveBtn.removeAttribute("data-index");
             saveBtn.textContent = "Guardar";
         } else {
-            data.push({ name, puesto });
+            data.push({ user, task, area, coments, date });
         }
         localStorage.setItem("data", JSON.stringify(data));
         loadData();
         clearForm();
     });
 
-    // function loadTheme() {
-    //     const theme = localStorage.getItem("theme") || "light";
-    //     document.body.dataset.bsTheme = theme;
-    //     if (theme == "dark") {
-    //         changeThemeBtn.textContent = "Light Mode";
-    //     } else {
-    //         changeThemeBtn.textContent = "Dark Mode";
-    //     }
-    // }
-
-    // changeThemeBtn.addEventListener("click", function () {
-    //     let body = document.body;
-
-    //     if (body.dataset.bsTheme == "dark") {
-    //         body.dataset.bsTheme = "light";
-    //         changeThemeBtn.textContent = "Dark Mode";
-    //         localStorage.setItem("theme", "light");
-    //     } else {
-    //         body.dataset.bsTheme = "dark";
-    //         changeThemeBtn.textContent = "Light Mode";
-    //         localStorage.setItem("theme", "dark");
-    //     }
-    // });
-
     tableBody.addEventListener("click", function (e) {
-        console.log(e.target.classList);
         if (e.target.classList.contains("btn-edit")) {
             const index = e.target.dataset.index;
             const data = JSON.parse(localStorage.getItem("data")) || [];
             const item = data[index];
-            inputName.value = item.name;
-            inputPuesto.value = item.puesto;
+
+            inputUser.value = item.user
+            inputTask.value = item.task;
+            inputArea.value = item.area;
+            inputComents.value = item.coments;
+            inputDate.value = item.date
+
             saveBtn.textContent = "Actualizar";
             saveBtn.setAttribute("data-index", index);
         } else if (e.target.classList.contains("btn-delete")) {
@@ -109,3 +97,4 @@ document.addEventListener("DOMContentLoaded", function () {
 
     loadData();
 });
+
